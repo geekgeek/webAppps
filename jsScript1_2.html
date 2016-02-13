@@ -1,0 +1,68 @@
+<html>
+<head>
+
+</head>
+<body>
+<h3>Simple Calculator</h3>
+<br/>
+<form Name="calc">
+<table border=2>
+<tr>
+<td colspan=4><input type=text Name="display"></td>
+<td colspan=4><input type=text Name="display2"></td>
+</tr>
+<tr>
+<textarea name="message" rows="10" cols="30"> </textarea>
+<textarea name="message2" rows="10" cols="30"> </textarea>
+</tr>
+<tr>
+<td><input type=button value="=" OnClick="sumValue()"></td>
+</tr>
+</table>
+</form>
+
+
+<script>
+
+
+
+function sumValue()
+{
+calc.display.value=eval(calc.display.value);
+var getTextb1 = calc.display.value;
+var getTextb2 = calc.display2.value;
+var getBigText = calc.message.value;
+var getBigText2 = calc.message2.value;
+
+var lengthOfText = getBigText.length; 
+
+var repBoxes = ["varX1", "varX2", "varX3"];
+var newText = getBigText.replace(repBoxes[0],getTextb1);
+var newText2 = getBigText.replace(repBoxes[1],getTextb2);
+
+var newText3 = newText.replace(repBoxes[1],getTextb2);
+
+//alert(newText3);
+function Multiwords(s){
+    var a = getBigText.toLowerCase();
+    
+    for(var i=0; i<s.length; i++){
+        if (a.indexOf(s[i].toLowerCase()) != -1){
+            alert('Found');
+			alert(i);
+        } else {
+            alert('Not Found');
+        }
+    }
+}
+
+Multiwords(["varX1","varX2","varX3"]);
+}
+
+
+
+
+</script>
+
+</body>
+</html>
