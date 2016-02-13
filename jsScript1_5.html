@@ -1,0 +1,65 @@
+<html>
+<head>
+
+</head>
+<body>
+<h3>Simple Calculator</h3>
+<br/>
+<form Name="calc">
+<table border=2>
+<tr>
+<td colspan=4><input type=text Name="display"></td>
+<td colspan=4><input type=text Name="display2"></td>
+</tr>
+<tr>
+<textarea name="message" rows="10" cols="30"> </textarea>
+<textarea name="message2" rows="10" cols="30"> </textarea>
+</tr>
+<tr>
+<td><input type=button value="=" OnClick="sumValue()"></td>
+</tr>
+</table>
+</form>
+
+
+<script>
+
+
+
+function sumValue()
+{
+//http://jsfiddle.net/L6LB2/35/
+calc.display.value=eval(calc.display.value);
+var getTextb1 = calc.display.value;
+var getTextb2 = calc.display2.value;
+var getBigText = calc.message.value;
+var getBigText2 = calc.message2.value;
+
+var lengthOfText = getBigText.length; 
+
+var repBoxes = ["#1", "#2", "#3"];
+
+var str = getBigText;
+var mapObj = {
+   elit1:getTextb1,
+   elit2:getTextb2,
+   elit3:"3"
+
+};
+var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
+str = str.replace(re, function(matched){
+  return mapObj[matched.toLowerCase()];
+});
+
+//alert(str);
+
+document.calc.message2.value = str;
+
+}
+
+
+
+</script>
+
+</body>
+</html>
