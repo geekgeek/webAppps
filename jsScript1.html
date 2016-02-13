@@ -1,0 +1,47 @@
+<html>
+<head>
+
+</head>
+<body>
+<h3>Simple Calculator</h3>
+<br/>
+<form Name="calc">
+<table border=2>
+<tr>
+<td colspan=4><input type=text Name="display"></td>
+<td colspan=4><input type=text Name="display2"></td>
+</tr>
+<tr>
+<textarea name="message" rows="10" cols="30"> </textarea>
+<textarea name="message2" rows="10" cols="30"> </textarea>
+</tr>
+<tr>
+<td><input type=button value="=" OnClick="sumValue()"></td>
+</tr>
+</table>
+</form>
+
+
+<script>
+function sumValue()
+{
+calc.display.value=eval(calc.display.value);
+var getTextb1 = calc.display.value;
+var getTextb2 = calc.display2.value;
+var getBigText = calc.message.value;
+var getBigText2 = calc.message2.value;
+
+var lengthOfText = getBigText.length; 
+
+var repBoxes = ["varX1", "varX", "BMW"];
+var newText = getBigText.replace("varx1",getTextb1);
+var newText2 = getBigText.replace("varx2",getTextb2);
+
+var newText3 = newText.replace("varx2",getTextb2);
+
+alert(newText3);
+}
+</script>
+
+</body>
+</html>
