@@ -1,0 +1,33 @@
+
+<html>
+<head>
+</head>
+
+<body>
+<p>
+  <textarea class="js-copytextarea">Hello I'm some text</textarea>
+</p>
+
+<p>
+  <button class="js-textareacopybtn">Copy Textarea</button>
+</p>
+
+<script>
+//stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
+
+copyTextareaBtn.addEventListener('click', function(event) {
+  var copyTextarea = document.querySelector('.js-copytextarea');
+  copyTextarea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Copying text command was ' + msg);
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+});
+</script>
+</body>
+</html>
