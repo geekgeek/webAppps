@@ -1,0 +1,84 @@
+<html>
+<head>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type = "text/css"/>
+</head>
+<body>
+
+
+<h2>Demo of Code Universe</h2>
+
+
+<form Name="calc">
+
+
+<div class="form-group">
+
+	
+	<input type=text Name="display" placeholder="var1">
+	
+	<input type=text Name="display2" placeholder="var2">
+	
+	<input type=text Name="display3" placeholder="var3">
+</div>
+
+
+<div class="form-group">
+<textarea name="message" rows="10" cols="30" placeholder="Input"></textarea>
+<textarea class="js-copytextarea" name="message2" rows="10" cols="30" placeholder="Output"></textarea>
+</div>
+<div class="form-group">
+<input class="btn btn-success" type=button value="Translate!" OnClick="sumValue()">
+<button class="btn btn-default" id="foo:bar">Copy</button>
+</div>
+</form>
+
+
+
+<script>
+//main program
+function sumValue()
+{
+//http://jsfiddle.net/L6LB2/35/
+//http://knockoutjs.com/
+calc.display.value=eval(calc.display.value);
+var getTextb1 = calc.display.value;
+var getTextb2 = calc.display2.value;
+var getTextb3 = calc.display3.value;
+var getBigText = calc.message.value;
+var getBigText2 = calc.message2.value;
+var lengthOfText = getBigText.length; 
+var repBoxes = [];
+repBoxes.push("var1");
+repBoxes.push("var2");
+var str = getBigText;
+var mapObj = {
+   el1:getTextb1,
+   el2:getTextb2,
+   el3:getTextb3,
+   el4:"number4"
+};
+var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
+str = str.replace(re, function(matched){
+  return mapObj[matched.toLowerCase()];
+});
+document.calc.message2.value = str;
+}
+//end main program
+//<copy textarea>
+var copyTextareaBtn = document.querySelector('#foo\\:bar');
+copyTextareaBtn.addEventListener('click', function(event) {
+  var copyTextarea = document.querySelector('.js-copytextarea');
+  copyTextarea.select();
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Copying text command was ' + msg);
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+});
+
+</script>
+
+</body>
+</html>
